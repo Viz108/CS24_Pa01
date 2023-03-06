@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "cards.h"
-#include "intbst.h"
+//#include "intbst.h"
 
 using namespace std;
 
