@@ -14,6 +14,12 @@ class cards
 
         void addCard(int cardValue);
         void printCards();
+        int getFirstCard();
+        int getLastCard(); 
+        int getNextCard(int cardValue);
+        int getPreviousCard(int cardValue);
+        bool containsCard(int cardValue); 
+        bool removeCard(int cardValue);
 
     private:
         IntBST list;

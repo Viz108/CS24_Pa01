@@ -1,8 +1,11 @@
 all: 
 	g++ main.cpp cards.cpp intbst.cpp
 
-cardTest:
-	g++ cardTest.cpp cards.cpp 
+game:
+	g++ main.cpp cards.cpp intbst.cpp -o game
 
-tester:
-	g++ tester.cpp cards.cpp intbst.cpp
+tests: 
+	g++ tests.cpp cards.cpp intbst.cpp -o tests
+
+clear: 
+	rm a.out game tests

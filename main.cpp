@@ -32,16 +32,17 @@ int main(int argv, char** argc){
     char suit = line.at(0);
     switch(suit) 
     {
-      case 'c': //Clubs - 0-12
+      case 'c': //Clubs - 1-13
+        cardValue += 1;
         break;
-      case 'd': //Diamonds - 13-25
-        cardValue += 13;
+      case 'd': //Diamonds - 14-26
+        cardValue += 14;
         break;
-      case 's': //Spades - 26-38
-        cardValue += 26;
+      case 's': //Spades - 27-39
+        cardValue += 27;
         break;
-      case 'h': //Hearts - 39-51
-        cardValue += 39;
+      case 'h': //Hearts - 40-52
+        cardValue += 40;
         break;
       default:
         cout << "ERROR: No suit, check input" << endl;
@@ -90,7 +91,7 @@ int main(int argv, char** argc){
   }
   cardFile1.close();
 
-  deckA.printCards(); 
+  //deckA.printCards(); 
 
 
   while (getline (cardFile2, line) && (line.length() > 0)){
@@ -99,16 +100,17 @@ int main(int argv, char** argc){
     char suit = line.at(0);
     switch(suit) 
     {
-      case 'c': //Clubs - 0-12
+      case 'c': //Clubs - 1-13
+        cardValue += 1;
         break;
-      case 'd': //Diamonds - 13-25
-        cardValue += 13;
+      case 'd': //Diamonds - 14-26
+        cardValue += 14;
         break;
-      case 's': //Spades - 26-38
-        cardValue += 26;
+      case 's': //Spades - 27-39
+        cardValue += 27;
         break;
-      case 'h': //Hearts - 39-51
-        cardValue += 39;
+      case 'h': //Hearts - 40-52
+        cardValue += 40;
         break;
       default:
         cout << "ERROR: No suit, check input" << endl;
@@ -157,8 +159,251 @@ int main(int argv, char** argc){
   }
   cardFile2.close();
 
-  deckB.printCards(); 
+  //deckB.printCards(); 
+
+
+  //Game
+  bool noMatchFlag = false;
+
+  while(!noMatchFlag)
+  {
+    noMatchFlag = true; 
+    int deckCurrValue = deckA.getFirstCard();
+    while(deckCurrValue != 0)
+    {
+      if(deckB.containsCard(deckCurrValue))
+      {
+        cout << "Alice picked matching card ";
+        if(deckCurrValue >= 1 && deckCurrValue <= 13) //club
+        {
+          cout << "c ";
+          if(deckCurrValue == 11) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 0 << endl; 
+          }
+        }
+        if(deckCurrValue >= 14 && deckCurrValue <= 26) //diamond
+        {
+          cout << "d ";
+          if(deckCurrValue == 11 + 13) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 13) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 13) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 13) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 13 << endl; 
+          }
+        }
+        if(deckCurrValue >= 27 && deckCurrValue <= 39) //spade
+        {
+          cout << "s ";
+          if(deckCurrValue == 11 + 26) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 26) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 26) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 26) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 26 << endl; 
+          }
+        }
+        if(deckCurrValue >= 40 && deckCurrValue <= 52) //heart
+        {
+          cout << "h ";
+          if(deckCurrValue == 11 + 39) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 39) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 39) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 39) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 39 << endl; 
+          }
+        }
+
+        noMatchFlag = false; 
+        deckA.removeCard(deckCurrValue);
+        deckB.removeCard(deckCurrValue);
+        break;
+      }
+      else
+      {
+        deckCurrValue = deckA.getNextCard(deckCurrValue);
+      }
+    }
+
+    deckCurrValue = deckB.getLastCard();
+    while(deckCurrValue != 0)
+    {
+      if(deckA.containsCard(deckCurrValue))
+      {
+        cout << "Bob picked matching card ";
+        if(deckCurrValue >= 1 && deckCurrValue <= 13) //club
+        {
+          cout << "c ";
+          if(deckCurrValue == 11) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 0 << endl; 
+          }
+        }
+        if(deckCurrValue >= 14 && deckCurrValue <= 26) //diamond
+        {
+          cout << "d ";
+          if(deckCurrValue == 11 + 13) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 13) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 13) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 13) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 13 << endl; 
+          }
+        }
+        if(deckCurrValue >= 27 && deckCurrValue <= 39) //spade
+        {
+          cout << "s ";
+          if(deckCurrValue == 11 + 26) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 26) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 26) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 26) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 26 << endl; 
+          }
+        }
+        if(deckCurrValue >= 40 && deckCurrValue <= 52) //heart
+        {
+          cout << "h ";
+          if(deckCurrValue == 11 + 39) //jack
+          {
+            cout << "j" << endl;
+          }
+          else if(deckCurrValue == 12 + 39) //queen
+          {
+            cout << "q" << endl;
+          }
+          else if(deckCurrValue == 13 + 39) //king
+          {
+            cout << "k" << endl;
+          }
+          else if(deckCurrValue == 1 + 39) //ace
+          {
+            cout << "a" << endl; 
+          }
+          else
+          {
+            cout << deckCurrValue - 39 << endl; 
+          }
+        }
+
+        noMatchFlag = false; 
+        deckA.removeCard(deckCurrValue);
+        deckB.removeCard(deckCurrValue);
+        break;
+      }
+      else
+      {
+        deckCurrValue = deckB.getPreviousCard(deckCurrValue);
+      }
+    }
+  }
   
+  cout << endl; 
+
+  cout << "Alice's cards:" << endl; 
+  deckA.printCards();
+  cout << endl; 
+  cout << "Bob's cards:" << endl; 
+  deckB.printCards();
   
   return 0;
 }
