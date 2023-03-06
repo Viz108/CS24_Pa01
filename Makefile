@@ -1,5 +1,5 @@
 all: 
-	g++ main.cpp cards.cpp 
+	g++ main.cpp cards.cpp -o game
 
 game:
 	g++ main.cpp cards.cpp  -o game

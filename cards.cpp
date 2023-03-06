@@ -83,6 +83,8 @@ bool IntBST::insert(int value, Node *n) {
             return insert(value, n -> right);
         }
     }
+
+    return false; 
 }
 
 // print tree data pre-order
@@ -205,6 +207,7 @@ IntBST::Node* IntBST::getNodeFor(int value, Node* n) const{
     {
         return getNodeFor(value, n -> right);
     }
+    return nullptr; 
 }
 
 // returns true if value is in the tree; false if not
@@ -315,6 +318,7 @@ IntBST::Node* IntBST::getPredecessorNode(int value) const{
         }
         return currReturnNode; 
     }
+    return nullptr; 
 }
     
 
@@ -427,6 +431,7 @@ IntBST::Node* IntBST::getSuccessorNode(int value) const{
         }
         return currReturnNode; 
     }
+    return nullptr;
 }
 
 // returns the successor value of the given value or 0 if there is none
@@ -570,7 +575,7 @@ bool IntBST::remove(int value){
     }
 
 
-   
+   return false; 
 }
 
 
