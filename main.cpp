@@ -50,25 +50,25 @@ int main(int argv, char** argc){
     }
 
     string cardNum; 
-    for(int i = 2; i < line.length(); i++)
+    for(long unsigned int i = 2; i < line.length(); i++)
     {
       cardNum += line.at(i);
     }
     
     //Face cards
-    if(cardNum.find('j') != -1) //jack
+    if((int)(cardNum.find('j')) != -1) //jack
     {
       cardValue += 10;
     }
-    else if(cardNum.find('q') != -1) //queen
+    else if((int)(cardNum.find('q')) != -1) //queen
     {
       cardValue += 11;
     }
-    else if(cardNum.find('k') != -1) //king
+    else if((int)(cardNum.find('k')) != -1) //king
     {
       cardValue += 12;
     }
-    else if(cardNum.find('a') != -1) //ace
+    else if((int)(cardNum.find('a')) != -1) //ace
     {
       cardValue += 0;
     }
@@ -118,25 +118,25 @@ int main(int argv, char** argc){
     }
 
     string cardNum; 
-    for(int i = 2; i < line.length(); i++)
+    for(long unsigned int i = 2; i < line.length(); i++)
     {
       cardNum += line.at(i);
     }
     
     //Face cards
-    if(cardNum.find('j') != -1) //jack
+    if((int)(cardNum.find('j')) != -1) //jack
     {
       cardValue += 10;
     }
-    else if(cardNum.find('q') != -1) //queen
+    else if((int)(cardNum.find('q')) != -1) //queen
     {
       cardValue += 11;
     }
-    else if(cardNum.find('k') != -1) //king
+    else if((int)(cardNum.find('k')) != -1) //king
     {
       cardValue += 12;
     }
-    else if(cardNum.find('a') != -1) //ace
+    else if((int)(cardNum.find('a')) != -1) //ace
     {
       cardValue += 0;
     }
