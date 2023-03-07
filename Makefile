@@ -6,6 +6,7 @@ game:
 
 tests: 
 	g++ tests.cpp cards.cpp utility.cpp -o tests
+	./tests
 
 clear: 
 	rm a.out game tests
